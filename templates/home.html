@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+<a href="/add">Put a pet up for adoption, you heartless ...</a>
+
+{% for msg in get_flashed_messages() %}
+  <p>{{ msg }}</p>
+{% endfor %}
+
+<ul>
+  {% for pet in pets %}
+
+  <li>
+    <div>{{ pet.name }}</div>
+
+    <div><img src="{{ pet.photo_url }}" alt="picture of {{ pet.name }}"></div>
+
+    {% if pet.available %}<div><strong>Available</strong></div>{% endif %}
+  </li>
+
+  {% endfor %}
+</ul>
+
+{% endblock %}
