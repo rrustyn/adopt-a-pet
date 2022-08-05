@@ -7,16 +7,19 @@
 <a href="/add">Put a pet up for adoption, you heartless ...</a>
 
 {% for msg in get_flashed_messages() %}
-  <p>{{ msg }}</p>
+<p>{{ msg }}</p>
 {% endfor %}
+<!-- better to put in base.html -->
 
 <ul>
   {% for pet in pets %}
 
   <li>
-    <div>{{ pet.name }}</div>
+    <div>
+      <a href="/{{ pet.id }}">{{ pet.name }}</a>
+    </div>
 
-    <div><img src="{{ pet.photo_url }}" alt="picture of {{ pet.name }}"></div>
+    <div><img src="{{ pet.photo_url }}" alt="Picture of {{ pet.name }}" width = 200px height = 200px></div>
 
     {% if pet.available %}<div><strong>Available</strong></div>{% endif %}
   </li>
